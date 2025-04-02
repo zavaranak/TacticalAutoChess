@@ -100,13 +100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1668d3b3a7fcb3141af62e06b12a2971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeType: 0
+  rangeType: 1
   currentDirection: {x: 0, y: 0, z: 0}
   spriteRenderer: {fileID: 0}
   baseDamage: 55
   baseHealth: 1
   range: 10
-  attackCooldown: 3
+  attackCooldown: 1
   movementSpeed: 9
   ended: 0
   projectilePrefab: {fileID: 0}

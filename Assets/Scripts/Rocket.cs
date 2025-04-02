@@ -7,7 +7,7 @@ public class Rocket : BaseEntity
     {   
         base.Setup(team, spawnNode);
         range = 10;
-        canAttack = false;
+        canAttack = false; 
         Attack();
     }
 
@@ -16,7 +16,8 @@ public class Rocket : BaseEntity
     {
         if (ended) return;
         if (baseHealth <= 0) { OnDeath(); return; };
-        FindTarget();
+        if (target==null) FindTarget();
+
         if (canAttack && InRange)
         {
             DirectHit();

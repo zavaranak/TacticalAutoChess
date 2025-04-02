@@ -34,8 +34,8 @@ MonoBehaviour:
     nodeIndex: 12
     team: 0
   - unitType: 1
-    unitPrefab: {fileID: 6240051727893800382, guid: 2aa2264a7455b4e4c8adf79d6ece85b5, type: 3}
-    nodeIndex: 7
+    unitPrefab: {fileID: 6254202812315481993, guid: bfc6b3d68bc073740b87d1780a6fdd36, type: 3}
+    nodeIndex: 13
     team: 0
   team2Spawns:
   - unitType: 0
@@ -57,4 +57,8 @@ MonoBehaviour:
   - unitType: 1
     unitPrefab: {fileID: 3323167940711875746, guid: 4e9e6cab18b10a1439e4dad993f9cee6, type: 3}
     nodeIndex: 58
+    team: 1
+  - unitType: 1
+    unitPrefab: {fileID: 3323167940711875746, guid: 4e9e6cab18b10a1439e4dad993f9cee6, type: 3}
+    nodeIndex: 57
     team: 1
