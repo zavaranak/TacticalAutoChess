@@ -93,11 +93,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprites_0
+      name: tank1_base
       rect:
         serializedVersion: 2
         x: 0
@@ -119,7 +132,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_1
+      name: tank1_move
       rect:
         serializedVersion: 2
         x: 600
@@ -141,7 +154,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_2
+      name: tank1_fire
       rect:
         serializedVersion: 2
         x: 1200
@@ -163,7 +176,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_3
+      name: tank1_fire2
       rect:
         serializedVersion: 2
         x: 1800
@@ -185,11 +198,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_4
+      name: rocket_base
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1800
+        x: 2400
+        y: 2400
         width: 600
         height: 600
       alignment: 0
@@ -207,10 +220,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_5
+      name: tank2_base
       rect:
         serializedVersion: 2
-        x: 600
+        x: 0
         y: 1800
         width: 600
         height: 600
@@ -229,10 +242,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_6
+      name: tank2_move
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 600
         y: 1800
         width: 600
         height: 600
@@ -251,10 +264,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_7
+      name: tank2_fire
       rect:
         serializedVersion: 2
-        x: 1800
+        x: 1200
         y: 1800
         width: 600
         height: 600
@@ -273,11 +286,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_8
+      name: tank2_fire2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1200
+        x: 1800
+        y: 1800
         width: 600
         height: 600
       alignment: 0
@@ -295,11 +308,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_9
+      name: rocket1
       rect:
         serializedVersion: 2
-        x: 600
-        y: 1200
+        x: 2400
+        y: 1800
         width: 600
         height: 600
       alignment: 0
@@ -317,10 +330,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_10
+      name: tank3_base
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 0
         y: 1200
         width: 600
         height: 600
@@ -339,10 +352,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_11
+      name: tank3_move
       rect:
         serializedVersion: 2
-        x: 1800
+        x: 600
         y: 1200
         width: 600
         height: 600
@@ -361,11 +374,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_12
+      name: tank3_fire
       rect:
         serializedVersion: 2
-        x: 0
-        y: 600
+        x: 1200
+        y: 1200
         width: 600
         height: 600
       alignment: 0
@@ -383,11 +396,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_13
+      name: tank3_fire2
       rect:
         serializedVersion: 2
-        x: 600
-        y: 600
+        x: 1800
+        y: 1200
         width: 600
         height: 600
       alignment: 0
@@ -405,11 +418,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_14
+      name: rocket2
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 600
+        x: 2400
+        y: 1200
         width: 600
         height: 600
       alignment: 0
@@ -427,10 +440,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_15
+      name: jet2_move
       rect:
         serializedVersion: 2
-        x: 1800
+        x: 0
         y: 600
         width: 600
         height: 600
@@ -449,10 +462,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_16
+      name: jet2_move2
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 600
         y: 600
         width: 600
         height: 600
@@ -471,11 +484,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_17
+      name: jet2_base
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1200
+        y: 600
         width: 600
         height: 600
       alignment: 0
@@ -493,11 +506,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_18
+      name: rocket3
       rect:
         serializedVersion: 2
-        x: 600
-        y: 0
+        x: 2400
+        y: 600
         width: 600
         height: 600
       alignment: 0
@@ -515,10 +528,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_19
+      name: jet1_move
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 0
         y: 0
         width: 600
         height: 600
@@ -537,10 +550,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_20
+      name: jet1_move2
       rect:
         serializedVersion: 2
-        x: 1800
+        x: 600
         y: 0
         width: 600
         height: 600
@@ -559,13 +572,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_21
+      name: jet1_base
       rect:
         serializedVersion: 2
-        x: 2400
-        y: 360
-        width: 120
-        height: 120
+        x: 1200
+        y: 0
+        width: 600
+        height: 600
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -581,15 +594,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_22
+      name: rocket4
       rect:
         serializedVersion: 2
         x: 2400
-        y: 120
-        width: 120
-        height: 120
+        y: 0
+        width: 600
+        height: 600
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -598,28 +611,6 @@ TextureImporter:
       bones: []
       spriteID: 36228abc92b5ae941bd90dda8d32188f
       internalID: -923712413
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprites_23
-      rect:
-        serializedVersion: 2
-        x: 2400
-        y: 240
-        width: 120
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a41b2721ac2cead4b8217b6152fcdc9d
-      internalID: -1170197470
       vertices: []
       indices: 
       edges: []
@@ -638,30 +629,30 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sprites_0: -326483319
-      Sprites_1: 788967051
-      Sprites_10: -562530563
-      Sprites_11: -689975502
-      Sprites_12: -189669901
-      Sprites_13: 1799712452
-      Sprites_14: 365593707
-      Sprites_15: -618516718
-      Sprites_16: -319647048
-      Sprites_17: 454601493
-      Sprites_18: -227527906
-      Sprites_19: 2130045178
-      Sprites_2: -659783724
-      Sprites_20: 571271256
-      Sprites_21: 1919441893
-      Sprites_22: -923712413
-      Sprites_23: -1170197470
-      Sprites_3: 917292416
-      Sprites_4: -644120642
-      Sprites_5: -1569926665
-      Sprites_6: -812508748
-      Sprites_7: -701824044
-      Sprites_8: -91097376
-      Sprites_9: -1111422867
+      2: -618516718
+      jet1_base: 1919441893
+      jet1_move: 2130045178
+      jet1_move2: 571271256
+      jet2_base: 454601493
+      jet2_move: -618516718
+      jet2_move2: -319647048
+      rocket1: -1111422867
+      rocket2: 365593707
+      rocket3: -227527906
+      rocket4: -923712413
+      rocket_base: -644120642
+      tank1_base: -326483319
+      tank1_fire: -659783724
+      tank1_fire2: 917292416
+      tank1_move: 788967051
+      tank2_base: -1569926665
+      tank2_fire: -701824044
+      tank2_fire2: -91097376
+      tank2_move: -812508748
+      tank3_base: -562530563
+      tank3_fire: -189669901
+      tank3_fire2: 1799712452
+      tank3_move: -689975502
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

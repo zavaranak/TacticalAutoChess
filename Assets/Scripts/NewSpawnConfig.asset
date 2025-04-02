@@ -27,14 +27,26 @@ MonoBehaviour:
     team: 0
   - unitType: 1
     unitPrefab: {fileID: 6240051727893800382, guid: 2aa2264a7455b4e4c8adf79d6ece85b5, type: 3}
-    nodeIndex: 4
+    nodeIndex: 0
     team: 0
   - unitType: 2
-    unitPrefab: {fileID: 6254202812315481993, guid: 1385548649e8eaa4a8a7c5030c3e044c, type: 3}
+    unitPrefab: {fileID: 7700809813119300426, guid: 042418a7a07a7ef489f408b7a31796b1, type: 3}
     nodeIndex: 12
     team: 0
-  - unitType: 1
-    unitPrefab: {fileID: 6254202812315481993, guid: bfc6b3d68bc073740b87d1780a6fdd36, type: 3}
+  - unitType: 0
+    unitPrefab: {fileID: 8488035545330566397, guid: c1c255fcc7342d542869c9bb57f025ff, type: 3}
+    nodeIndex: 12
+    team: 0
+  - unitType: 2
+    unitPrefab: {fileID: 7700809813119300426, guid: 39e678a0bcc673a40920df6f9ac8f71a, type: 3}
+    nodeIndex: 13
+    team: 0
+  - unitType: 2
+    unitPrefab: {fileID: 7700809813119300426, guid: 39e678a0bcc673a40920df6f9ac8f71a, type: 3}
+    nodeIndex: 13
+    team: 0
+  - unitType: 2
+    unitPrefab: {fileID: 7700809813119300426, guid: 39e678a0bcc673a40920df6f9ac8f71a, type: 3}
     nodeIndex: 13
     team: 0
   team2Spawns:
@@ -57,6 +69,14 @@ MonoBehaviour:
   - unitType: 1
     unitPrefab: {fileID: 3323167940711875746, guid: 4e9e6cab18b10a1439e4dad993f9cee6, type: 3}
     nodeIndex: 58
+    team: 1
+  - unitType: 1
+    unitPrefab: {fileID: 3323167940711875746, guid: 4e9e6cab18b10a1439e4dad993f9cee6, type: 3}
+    nodeIndex: 57
+    team: 1
+  - unitType: 1
+    unitPrefab: {fileID: 8488035545330566397, guid: 43dd05479819d6748a74a19aec02e8a3, type: 3}
+    nodeIndex: 57
     team: 1
   - unitType: 1
     unitPrefab: {fileID: 3323167940711875746, guid: 4e9e6cab18b10a1439e4dad993f9cee6, type: 3}

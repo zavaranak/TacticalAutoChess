@@ -15,7 +15,6 @@ public class Rocket : BaseEntity
     protected override void Update()
     {
         if (ended) return;
-        if (baseHealth <= 0) { OnDeath(); return; };
         if (target==null) FindTarget();
 
         if (canAttack && InRange)
@@ -36,7 +35,7 @@ public class Rocket : BaseEntity
                     enemy.TakeDammage(baseDamage);
                 }
             }
-            
+            this.currentHealth = 0;
             base.OnDeath();
         }
     }

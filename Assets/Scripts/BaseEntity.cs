@@ -9,8 +9,11 @@ public class BaseEntity : MonoBehaviour
     public RangeType rangeType = RangeType.ShortRange;
     public Vector3 currentDirection;
     public SpriteRenderer spriteRenderer;
+
+    //public HealthBar healthBar;
     public float baseDamage ;
     public float baseHealth;
+    public float currentHealth;
     public float range = 3f;
 
     public float attackCooldown;
@@ -41,7 +44,7 @@ public class BaseEntity : MonoBehaviour
     protected virtual void Update()
     {
         if (ended) { return; };
-        if (baseHealth <= 0) { OnDeath();return; };
+        if (currentHealth <= 0) { OnDeath();return; };
         if (Attacking) {
             Attack();
         };
@@ -58,13 +61,15 @@ public class BaseEntity : MonoBehaviour
                 this.GetInPosition();
             } 
         }else
-        {
+        {   
             this.GetInRange();
         }
 
     }
     public virtual void Setup(Team team, Node spawnNode)
     {
+        
+
         if (spawnNode == null)
         {
             Debug.Log("spawnNode is null at Setup");
@@ -87,7 +92,10 @@ public class BaseEntity : MonoBehaviour
 
         SetCurrentNode(spawnNode);
         transform.position = currentNode.worldPosition;
+        currentHealth = baseHealth;
         currentNode.SetOccupied(true);
+        //healthBar = Instantiate(healthBar, this.transform);
+        //healthBar.Setup(this.transform);
     }
     protected virtual void GetInPosition()
     {
@@ -193,6 +201,7 @@ public class BaseEntity : MonoBehaviour
 
     protected virtual void OnDeath()
     {
+
         this.currentNode.SetOccupied(false);
         this.currentNode = null;
         spriteRenderer.enabled = false;
@@ -207,7 +216,8 @@ public class BaseEntity : MonoBehaviour
     public  virtual void TakeDammage(float damage)
     {
         Debug.Log(currentNode.index + " hit by enemy");
-        this.baseHealth -= damage;
+        currentHealth -= damage;
+        //healthBar.SetHealth((currentHealth / baseHealth)>= 0 ? currentHealth / baseHealth : 0);
     }
 
     public IEnumerator AttackCooldown()

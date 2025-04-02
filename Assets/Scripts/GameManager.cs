@@ -6,6 +6,8 @@ public class GameManager : Manager<GameManager>
     [Header("Spawn Configuration")]
     [SerializeField] private BaseEntitySpawnConfig spawnConfig;
     Dictionary<Team, List<BaseEntity>> entitiesByTeam = new ();
+    public HealthBar healthBarPrefab1;
+    public HealthBar healthBarPrefab2;
     //public List<BaseEntity> allEntitiesPrefab;
     //int unitesPerTeam = 7;
     private new void Awake()
@@ -31,8 +33,10 @@ public class GameManager : Manager<GameManager>
         {
             if (spawn.team != team) continue;
 
+            HealthBar healthBar = Instantiate(team == Team.Team1? healthBarPrefab1:healthBarPrefab2);
             BaseEntity newEntity = Instantiate(spawn.GetPrefab());
             Node spawnNode = GridManager.Instance.GetNodeByIndex(spawn.nodeIndex);
+            healthBar.Setup(newEntity);
 
             if (spawnNode == null)
             {
