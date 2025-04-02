@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class BaseEntity : MonoBehaviour
 {
+    public RangeType rangeType = RangeType.ShortRange;
     public Vector3 currentDirection;
     public SpriteRenderer spriteRenderer;
     public float baseDamage ;
@@ -27,7 +28,7 @@ public class BaseEntity : MonoBehaviour
 
     protected bool moving = false;
 
-    protected bool gameEnded = false;
+    public bool ended = false;
     protected bool InPosition => Vector3.Distance(this.transform.position, this.currentNode.worldPosition) <= 0.05f;
     protected bool InRange => target!=null && target.currentNode!=null && Vector3.Distance(this.transform.position, target.transform.position) <= range;
     protected bool Attacking => InRange && (target.transform.position- this.transform.position) == currentDirection;
@@ -39,7 +40,7 @@ public class BaseEntity : MonoBehaviour
     }
     protected virtual void Update()
     {
-        if (gameEnded) return;
+        if (ended) { return; };
         if (baseHealth <= 0) { OnDeath();return; };
         if (Attacking) {
             Attack();
@@ -47,7 +48,6 @@ public class BaseEntity : MonoBehaviour
 
         if (currentNode == null)
         {
-            Debug.Log("current node is null at Update");
             return;
         }
 
@@ -106,35 +106,19 @@ public class BaseEntity : MonoBehaviour
     }
     protected virtual void FindTarget()
     {
-        var enemies = GameManager.Instance.GetEntitiesAgains(myTeam);
+        BaseEntity tempEnemy = rangeType == RangeType.ShortRange ? FindNearestEnemy() : rangeType == RangeType.LongRange ? FindFurthestEmeny() : null;
 
-        //find closest enemy:
-        float minDistance = Mathf.Infinity;
-        BaseEntity tempEnemy = null;
-        if (enemies.Count > 0)
-        {
-            foreach (BaseEntity enemy in enemies)
-            {
-                Node enemyPosition = enemy.currentNode;
-                if (enemyPosition == null) continue;
-                if (Vector3.Distance(enemy.transform.position, this.transform.position) < minDistance)
-                {
-                    minDistance = Vector3.Distance(enemy.transform.position, this.transform.position);
-                    tempEnemy = enemy;
-                }
-            }
-        }
         if (tempEnemy == null)
         {
             Debug.Log(myTeam + "WON");
-            gameEnded = true;
+            ended = true;
             return;
         }
         this.target = tempEnemy;
         
     }
 
-   public virtual void SetCurrentNode(Node node)
+    public virtual void SetCurrentNode(Node node)
 
     {
         if (node == null)
@@ -190,7 +174,7 @@ public class BaseEntity : MonoBehaviour
             if (destination == null)
                 return;
 
-            var path = GridManager.Instance.GetPath(currentNode, destination);
+            var path = GetPath(currentNode, destination);
             if (path == null || path.Count <= 1)
                 return;
 
@@ -213,10 +197,10 @@ public class BaseEntity : MonoBehaviour
         this.currentNode = null;
         spriteRenderer.enabled = false;
         Debug.Log("one unit down from" + myTeam);
-        gameEnded = true;
+        ended = true;
     }
 
-    protected virtual  void Attack() {
+    protected virtual void Attack() {
         //override
     }
 
@@ -233,5 +217,59 @@ public class BaseEntity : MonoBehaviour
         canAttack = true;
     }
 
+    protected virtual List<Node> GetPath(Node start, Node end)
+    {
+        return new List<Node>() { };
+    }
+
+    protected BaseEntity FindFurthestEmeny()
+    {
+        var enemies = GameManager.Instance.GetEntitiesAgains(myTeam);
+        float maxDistance = 0f;
+        BaseEntity tempEnemy = null;
+        if (enemies.Count > 0)
+        {
+            foreach (BaseEntity enemy in enemies)
+            {
+                if (enemy.ended) continue;
+                Node enemyPosition = enemy.currentNode;
+                if (enemyPosition == null) continue;
+                if (Vector3.Distance(enemy.transform.position, transform.position) > maxDistance)
+                {
+                    maxDistance = Vector3.Distance(enemy.transform.position, transform.position);
+                    tempEnemy = enemy;
+                }
+            }
+        }
+        return tempEnemy;
+    }
+
+    protected BaseEntity FindNearestEnemy()
+    {
+        var enemies = GameManager.Instance.GetEntitiesAgains(myTeam);
+
+        float minDistance = Mathf.Infinity;
+        BaseEntity tempEnemy = null;
+        if (enemies.Count > 0)
+        {
+            foreach (BaseEntity enemy in enemies)
+            {
+                if (enemy.ended) continue;
+                Node enemyPosition = enemy.currentNode;
+                if (enemyPosition == null) continue;
+                if (Vector3.Distance(enemy.transform.position, this.transform.position) < minDistance)
+                {
+                    minDistance = Vector3.Distance(enemy.transform.position, this.transform.position);
+                    tempEnemy = enemy;
+                }
+            }
+        }
+        return tempEnemy;
+    }
 }
 
+public enum RangeType
+{
+    ShortRange,
+    LongRange
+}

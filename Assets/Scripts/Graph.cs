@@ -61,9 +61,10 @@ public class Graph
     }
 
 
-    public virtual List<Node> GetShortestPath(Node start, Node end)
+
+    public virtual List<Node> GetAirPath(Node start, Node end)
     {
-        List<Node> path = new();
+        List<Node> path = new List<Node>();
 
         if (start == end)
         {
@@ -72,6 +73,60 @@ public class Graph
         }
 
 
+        List<Node> unvisited = new ();
+        Dictionary<Node, Node> previous = new ();
+
+        Dictionary<Node, float> distances = new ();
+
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            Node node = nodes[i];
+            unvisited.Add(node);
+            distances.Add(node, float.MaxValue);
+        }
+
+        distances[start] = 0f;
+        while (unvisited.Count != 0)
+        {
+
+            unvisited = unvisited.OrderBy(node => distances[node]).ToList();
+            Node current = unvisited[0];
+            unvisited.Remove(current);
+
+            if (current == end)
+            {
+                while (previous.ContainsKey(current))
+                {
+                    path.Insert(0, current);
+                    current = previous[current];
+                }
+                path.Insert(0, current);
+                break;
+            }
+
+            foreach (Node neighbor in Neighbors(current))
+            {
+                float length = Vector3.Distance(current.worldPosition, neighbor.worldPosition);
+
+                float alt = distances[current] + length;
+                if (alt < distances[neighbor])
+                {
+                    distances[neighbor] = alt;
+                    previous[neighbor] = current;
+                }
+            }
+        }
+        return path;
+    }
+    public virtual List<Node> GetSurfacePath(Node start, Node end)
+    {
+        List<Node> path = new();
+
+        if (start == end)
+        {
+            path.Add(start);
+            return path;
+        }
         List<Node> unvisited = new();
         Dictionary<Node, Node> previous = new();
 
@@ -109,18 +164,6 @@ public class Graph
             foreach (Node neighbor in Neighbors(current))
             {
                 Edge edge = edges.Find(edge => edge.from == current && edge.to == neighbor);
-
-                //float weight = edge.GetWeight();
-                ////float realLength = Vector3.Distance(end.worldPosition, neighbor.worldPosition);
-
-                //float alt = distances[current] + weight;
-                //    if (alt < distances[neighbor])
-                //    {
-                //        distances[neighbor] = alt;
-                //        previous[neighbor] = current;
-                //    }
-
-
 
                 float weight = edge.GetWeight();
                 float heuristic = Vector3.Distance(end.worldPosition, neighbor.worldPosition);

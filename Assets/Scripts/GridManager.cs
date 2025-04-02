@@ -13,35 +13,6 @@ public class GridManager : Manager<GridManager>
     Dictionary<Team, int> startPositionPerTeam;
 
 
-    //public Node GetFreeNode(Team forTeam)
-    //{
-    //    int startIndex = startPositionPerTeam[forTeam];
-    //    int currentIndex = startIndex;
-
-    //    while (graph.Nodes[currentIndex].IsOccupied)
-    //    {
-    //        if (startIndex == 0)
-    //        {
-    //            currentIndex++;
-    //            if (currentIndex == graph.Nodes.Count)
-    //                return null;
-    //        }
-    //        else
-    //        {
-                
-    //            currentIndex--;
-    //            if (currentIndex == -1)
-    //                return null;
-    //        }
-
-    //    }
-    //    if (forTeam == Team.Team2)
-    //    {
-    //        GridManager.Instance.toIndex =currentIndex;
-    //    }
-    //    return graph.Nodes[currentIndex];
-    //}
-
     private new void Awake()
     {
         base.Awake();
@@ -93,14 +64,24 @@ public class GridManager : Manager<GridManager>
     }
 
 
-    public List<Node> GetPath(Node from, Node to)
+    public List<Node> GetSurfacePath(Node from, Node to)
     {
         if(from==null || to == null)
         {
             return null;
         }
 
-        return graph.GetShortestPath(from, to);
+        return graph.GetSurfacePath(from, to);
+    }
+
+    public List<Node> GetAirPath(Node from, Node to)
+    {
+        if (from == null || to == null)
+        {
+            return null;
+        }
+
+        return graph.GetAirPath(from, to);
     }
 
     public List<Node> GetNeighbors(Node node)
@@ -160,7 +141,7 @@ public class GridManager : Manager<GridManager>
         if (fromIndex >= allNodes.Count || toIndex >= allNodes.Count)
             return;
 
-        List<Node> path = graph.GetShortestPath(allNodes[fromIndex], allNodes[toIndex]);
+        List<Node> path = graph.GetSurfacePath(allNodes[fromIndex], allNodes[toIndex]);
         if (path.Count > 1)
         {
             //Debug.Log(path.Count);

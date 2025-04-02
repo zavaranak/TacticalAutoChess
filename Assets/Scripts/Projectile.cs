@@ -18,7 +18,6 @@ public class Projectile : MonoBehaviour
         this.damage = damage;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!hit && destination !=null)

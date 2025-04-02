@@ -24,4 +24,9 @@ public class Tank : BaseEntity
         }
         StartCoroutine(this.AttackCooldown());
     }
+
+    protected override List<Node> GetPath(Node start,Node end)
+    {
+        return GridManager.Instance.GetSurfacePath(start, end);
+    }
 }
