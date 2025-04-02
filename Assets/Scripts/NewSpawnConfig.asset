@@ -14,47 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team1Spawns:
   - unitType: 0
-    unitPrefab: {fileID: 8280062403565935081, guid: b0d3454c561858643b4e8d14e50346a9, type: 3}
+    unitPrefab: {fileID: 8488035545330566397, guid: c1c255fcc7342d542869c9bb57f025ff, type: 3}
     nodeIndex: 10
     team: 0
   - unitType: 0
-    unitPrefab: {fileID: 8280062403565935081, guid: b0d3454c561858643b4e8d14e50346a9, type: 3}
+    unitPrefab: {fileID: 8488035545330566397, guid: c1c255fcc7342d542869c9bb57f025ff, type: 3}
     nodeIndex: 0
     team: 0
   - unitType: 0
-    unitPrefab: {fileID: 8280062403565935081, guid: b0d3454c561858643b4e8d14e50346a9, type: 3}
-    nodeIndex: 1
-    team: 0
-  - unitType: 0
-    unitPrefab: {fileID: 8280062403565935081, guid: b0d3454c561858643b4e8d14e50346a9, type: 3}
-    nodeIndex: 3
-    team: 0
-  - unitType: 0
     unitPrefab: {fileID: 8488035545330566397, guid: c1c255fcc7342d542869c9bb57f025ff, type: 3}
-    nodeIndex: 7
+    nodeIndex: 1
     team: 0
   team2Spawns:
   - unitType: 0
-    unitPrefab: {fileID: 8280062403565935081, guid: b0d3454c561858643b4e8d14e50346a9, type: 3}
+    unitPrefab: {fileID: 8488035545330566397, guid: 668cef64865719c43b8e02d757664bb5, type: 3}
     nodeIndex: 49
     team: 1
   - unitType: 0
-    unitPrefab: {fileID: 8280062403565935081, guid: b0d3454c561858643b4e8d14e50346a9, type: 3}
+    unitPrefab: {fileID: 8488035545330566397, guid: 668cef64865719c43b8e02d757664bb5, type: 3}
     nodeIndex: 53
     team: 1
   - unitType: 0
     unitPrefab: {fileID: 8488035545330566397, guid: 668cef64865719c43b8e02d757664bb5, type: 3}
     nodeIndex: 60
-    team: 1
-  - unitType: 0
-    unitPrefab: {fileID: 8488035545330566397, guid: 668cef64865719c43b8e02d757664bb5, type: 3}
-    nodeIndex: 51
-    team: 1
-  - unitType: 0
-    unitPrefab: {fileID: 8488035545330566397, guid: 668cef64865719c43b8e02d757664bb5, type: 3}
-    nodeIndex: 47
-    team: 1
-  - unitType: 0
-    unitPrefab: {fileID: 8488035545330566397, guid: 668cef64865719c43b8e02d757664bb5, type: 3}
-    nodeIndex: 45
     team: 1

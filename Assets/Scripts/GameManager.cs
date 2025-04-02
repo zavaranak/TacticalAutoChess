@@ -25,7 +25,7 @@ public class GameManager : Manager<GameManager>
         //{
         //    //team1 unit 
         //    int randomIndex = UnityEngine.Random.Range(0, allEntitiesPrefab.Count - 1);
-        //    BaseEntity newEntity = Instantiate(allEntitiesPrefab[randomIndex]);
+            //BaseEntity newEntity = Instantiate(allEntitiesPrefab[randomIndex]);
         //    entitiesByTeam[Team.Team1].Add(newEntity);
 
         //    newEntity.Setup(Team.Team1, GridManager.Instance.GetFreeNode(Team.Team1));

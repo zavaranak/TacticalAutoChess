@@ -12,14 +12,14 @@ public class BaseEntity : MonoBehaviour
     public int baseHealth = 1;
     public float range = 3f;
 
-    public float attackSpeed = 1f;
+    private float attackCooldown = 2f;
     public float movementSpeed = 1f;
 
     protected BaseEntity target;
 
     protected Team myTeam;
 
-    protected Node currentNode;
+    public Node currentNode;
 
     protected Node destination;
 
@@ -34,19 +34,22 @@ public class BaseEntity : MonoBehaviour
 
     protected int deathCountDown = 100;
 
+    protected bool canAttack = true;
 
     void Awake()
     {
     }
     protected virtual void Update()
     {
-        if (done) return;
+        if (done) Destroy(gameObject);
         if (Attacking) {
+            Attack();
             deathCountDown -= 1;
             if (deathCountDown == 0)
             {
                 OnDeath();
             }
+            return;
         };
 
         if (currentNode == null)
@@ -55,24 +58,12 @@ public class BaseEntity : MonoBehaviour
             return;
         }
 
-        this.FindTarget(); 
-       
-        if (InRange) {
-            
-            if (!Attacking) {
-                if (target != null && target.currentNode != null)
-                { 
-                Debug.Log("Ready to attack from " + this.currentNode.index + " to " + target.currentNode.index) ; this.GetInPosition(); }
-                }
-            else
-            {
-                if (target != null && target.currentNode !=null)
-                {
-                    Debug.Log("Attack from " + this.currentNode.index);
-                    Debug.Log(" to " + target.currentNode.index);
-                }
+        this.FindTarget();
 
-            }
+        if (InRange) {
+            if (!Attacking) {
+                this.GetInPosition();
+            } 
         }else
         {
             this.GetInRange();
@@ -232,8 +223,19 @@ public class BaseEntity : MonoBehaviour
         done = true;
     }
 
-    protected virtual  void Attack() { 
-    
+    protected virtual  void Attack() {
+        //if (!canAttack) return;
+
+        //// Cooldown
+        //StartCoroutine(AttackCooldown());
     }
+
+    public IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
+    }
+
 }
 
