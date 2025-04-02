@@ -9,18 +9,14 @@ public class Tank : BaseEntity
     public override void Setup(Team team, Node spawnNode)
     {
         base.Setup(team, spawnNode);
-        //this.range = 2;
-        this.deathCountDown = 200;
-        //this.movementSpeed = 0.5f;
     }
 
     protected override void Attack()
     {
-        //base.Attack();
         if (!canAttack) return;
         if (target != null && target.currentNode != null) { 
             Projectile newProjectiile = Instantiate(projectilePrefab.GetComponent<Projectile>());
-            newProjectiile.Setup(this.transform.position,target.currentNode);
+            newProjectiile.Setup(this.transform.position,target.currentNode,myTeam,baseDamage);
         }
         else
         {

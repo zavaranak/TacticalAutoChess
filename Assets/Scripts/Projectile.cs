@@ -2,53 +2,48 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private float speed = 7f;
+    private Team against;
+    private float damage; 
+    readonly float speed = 6f;
     protected Node destination;
-    protected bool ready = false;
-    protected bool hitTarget = false;
+    protected bool hit;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    public void Setup(Vector3 initPosition, Node targetPosition)
-    {
-        
-        this.transform.up = (targetPosition.worldPosition - initPosition);
-        this.destination = targetPosition;
-        this.transform.position = initPosition;
-        this.ready = true;
-
+    public void Setup(Vector3 initPosition, Node targetPosition, Team myTeam, float damage)
+    {  
+        transform.up = (targetPosition.worldPosition - initPosition);
+        destination = targetPosition;
+        transform.position = initPosition;
+        against = myTeam == Team.Team1?Team.Team2:Team.Team1;
+        hit = false;
+        this.damage = damage;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (destination != null)
+        if (!hit && destination !=null)
         {
-            if (!destination.IsOccupied)
-            {
-                Debug.Log("Target moved from destination");
-            }
-            FireAtDestination();
+            OnWay();
         }
     }
 
-    virtual protected void FireAtDestination()
+    private void OnWay()
     {
-    
-    this.transform.position = Vector3.MoveTowards(
-    this.transform.position,
-    this.destination.worldPosition,
-    speed * Time.deltaTime);
-       // Destroy if reached target
-    if (transform.position == destination.worldPosition)
+      transform.position = Vector3.MoveTowards(transform.position,destination.worldPosition,speed *Time.deltaTime);
+
+      if (transform.position == destination.worldPosition)
         {
-            
-            hitTarget = true;
-            Destroy(gameObject);
+            OnHit();
         }
+    }
+
+    private void OnHit() {
+        hit = true;
+        BaseEntity target = GameManager.Instance.GetEntityAtNode(destination,against);
+        if (target != null)
+        {
+            target.TakeDammage(damage);
+        }
+        Destroy(gameObject);
     }
 }

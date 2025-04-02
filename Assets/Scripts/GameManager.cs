@@ -21,26 +21,6 @@ public class GameManager : Manager<GameManager>
         SpawnTeam(Team.Team1);
         SpawnTeam(Team.Team2);
 
-        //for (int i = 0; i < unitesPerTeam; i++)
-        //{
-        //    //team1 unit 
-        //    int randomIndex = UnityEngine.Random.Range(0, allEntitiesPrefab.Count - 1);
-            //BaseEntity newEntity = Instantiate(allEntitiesPrefab[randomIndex]);
-        //    entitiesByTeam[Team.Team1].Add(newEntity);
-
-        //    newEntity.Setup(Team.Team1, GridManager.Instance.GetFreeNode(Team.Team1));
-
-        //    //team2 unit
-        //    int randomIndex2 = 0;
-        //    if (randomIndex<allEntitiesPrefab.Count -1 )
-        //    {
-        //        randomIndex2 = randomIndex + 1;
-        //    }
-        //    BaseEntity newEntity2 = Instantiate(allEntitiesPrefab[randomIndex2]);
-        //    entitiesByTeam[Team.Team2].Add(newEntity2);
-        //    newEntity2.Setup(Team.Team2, GridManager.Instance.GetFreeNode(Team.Team2));
-
-        //}
     }
 
     private void SpawnTeam(Team team)
@@ -71,6 +51,12 @@ public class GameManager : Manager<GameManager>
             return entitiesByTeam[Team.Team2];
         else return entitiesByTeam[Team.Team1];
 }
+    public BaseEntity GetEntityAtNode(Node node, Team team) {
+        BaseEntity tempEntity = entitiesByTeam[team].Find(
+                entity => entity.currentNode == node
+            );
+        return tempEntity;
+    }
 }
 
 

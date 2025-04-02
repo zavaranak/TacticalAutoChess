@@ -8,11 +8,11 @@ public class BaseEntity : MonoBehaviour
 {
     public Vector3 currentDirection;
     public SpriteRenderer spriteRenderer;
-    public int baseDamage = 1;
-    public int baseHealth = 1;
+    public float baseDamage ;
+    public float baseHealth;
     public float range = 3f;
 
-    private float attackCooldown = 2f;
+    public float attackCooldown;
     public float movementSpeed = 1f;
 
     protected BaseEntity target;
@@ -27,12 +27,10 @@ public class BaseEntity : MonoBehaviour
 
     protected bool moving = false;
 
-    protected bool done = false;
+    protected bool gameEnded = false;
     protected bool InPosition => Vector3.Distance(this.transform.position, this.currentNode.worldPosition) <= 0.05f;
     protected bool InRange => target!=null && target.currentNode!=null && Vector3.Distance(this.transform.position, target.transform.position) <= range;
     protected bool Attacking => InRange && (target.transform.position- this.transform.position) == currentDirection;
-
-    protected int deathCountDown = 100;
 
     protected bool canAttack = true;
 
@@ -41,15 +39,10 @@ public class BaseEntity : MonoBehaviour
     }
     protected virtual void Update()
     {
-        if (done) Destroy(gameObject);
+        if (gameEnded) return;
+        if (baseHealth <= 0) { OnDeath();return; };
         if (Attacking) {
             Attack();
-            deathCountDown -= 1;
-            if (deathCountDown == 0)
-            {
-                OnDeath();
-            }
-            return;
         };
 
         if (currentNode == null)
@@ -134,7 +127,7 @@ public class BaseEntity : MonoBehaviour
         if (tempEnemy == null)
         {
             Debug.Log(myTeam + "WON");
-            done = true;
+            gameEnded = true;
             return;
         }
         this.target = tempEnemy;
@@ -220,14 +213,17 @@ public class BaseEntity : MonoBehaviour
         this.currentNode = null;
         spriteRenderer.enabled = false;
         Debug.Log("one unit down from" + myTeam);
-        done = true;
+        gameEnded = true;
     }
 
     protected virtual  void Attack() {
-        //if (!canAttack) return;
+        //override
+    }
 
-        //// Cooldown
-        //StartCoroutine(AttackCooldown());
+    public  virtual void TakeDammage(float damage)
+    {
+        Debug.Log(currentNode.index + " hit by enemy");
+        this.baseHealth -= damage;
     }
 
     public IEnumerator AttackCooldown()
