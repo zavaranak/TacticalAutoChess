@@ -4,7 +4,7 @@ public class Projectile : MonoBehaviour
 {
     private Team against;
     private float damage; 
-    readonly float speed = 6f;
+    readonly float speed = 4f;
     protected Node destination;
     protected bool hit;
 

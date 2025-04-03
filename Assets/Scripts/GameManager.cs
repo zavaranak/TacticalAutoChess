@@ -70,9 +70,9 @@ public enum Team
     Team2
 }
 
-public enum UnitType
-{
-    Tank,
-    JetFigher,
-    Rocket
-}
+//public enum UnitType
+//{
+//    Tank,
+//    JetFigher,
+//    Rocket
+//}

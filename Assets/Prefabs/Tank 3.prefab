@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 65582153071445188}
   - component: {fileID: 4680717641213148586}
   - component: {fileID: 418162165591358550}
+  - component: {fileID: 2420817894647750996}
   m_Layer: 0
   m_Name: Tank 3
   m_TagString: Untagged
@@ -111,3 +112,25 @@ MonoBehaviour:
   movementSpeed: 0.3
   ended: 0
   projectilePrefab: {fileID: 3915919746266120838, guid: e960c9005971bf34a97ebb28297df945, type: 3}
+--- !u!95 &2420817894647750996
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8488035545330566397}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f9e13e91826bb4e49a56b696833959d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

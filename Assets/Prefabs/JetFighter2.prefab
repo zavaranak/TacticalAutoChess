@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6871248548306297466}
   - component: {fileID: 7631477308331082150}
   - component: {fileID: 4178786801597995459}
+  - component: {fileID: 9181460686367230008}
   m_Layer: 0
   m_Name: JetFighter2
   m_TagString: Untagged
@@ -106,8 +107,30 @@ MonoBehaviour:
   baseDamage: 50
   baseHealth: 80
   currentHealth: 0
-  range: 4.5
+  range: 4
   attackCooldown: 4.5
-  movementSpeed: 1
+  movementSpeed: 2
   ended: 0
   projectilePrefab: {fileID: 3915919746266120838, guid: e960c9005971bf34a97ebb28297df945, type: 3}
+--- !u!95 &9181460686367230008
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323167940711875746}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6db824ad9816d4c45b7303f79be78899, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

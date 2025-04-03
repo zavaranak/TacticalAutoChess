@@ -7,7 +7,7 @@ public class BaseEntitySpawnConfig : ScriptableObject
     [System.Serializable]
     public class SpawnPoint
     {
-        public UnitType unitType;
+        //public UnitType unitType;
         public GameObject unitPrefab;
         public int nodeIndex;
         public Team team;

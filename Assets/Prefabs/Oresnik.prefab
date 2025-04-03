@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2529989822301314798}
   - component: {fileID: 1229604110758952787}
   m_Layer: 0
-  m_Name: Rocket-Long_Range
+  m_Name: Oresnik
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -644120642, guid: f74f3718d81a039479bc650848743ddc, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -108,10 +108,10 @@ MonoBehaviour:
   baseHealth: 1
   currentHealth: 0
   range: 10
-  attackCooldown: 3
-  movementSpeed: 1.5
+  attackCooldown: 1
+  movementSpeed: 6
   ended: 0
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 3915919746266120838, guid: ec1291c3748864f46917cd746221d532, type: 3}
 --- !u!95 &1229604110758952787
 Animator:
   serializedVersion: 7

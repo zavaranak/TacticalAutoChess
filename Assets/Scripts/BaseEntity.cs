@@ -10,6 +10,7 @@ public class BaseEntity : MonoBehaviour
     public Vector3 currentDirection;
     public SpriteRenderer spriteRenderer;
 
+    protected Animator animator;
     //public HealthBar healthBar;
     public float baseDamage ;
     public float baseHealth;
@@ -32,9 +33,9 @@ public class BaseEntity : MonoBehaviour
     protected bool moving = false;
 
     public bool ended = false;
-    protected bool InPosition => Vector3.Distance(this.transform.position, this.currentNode.worldPosition) <= 0.05f;
-    protected bool InRange => target!=null && target.currentNode!=null && Vector3.Distance(this.transform.position, target.transform.position) <= range;
-    protected bool Attacking => InRange && (target.transform.position- this.transform.position) == currentDirection;
+    protected bool InPosition => Vector3.Distance(transform.position, currentNode.worldPosition) <= 0.05f;
+    protected bool InRange => target!=null && target.currentNode!=null && Vector3.Distance(transform.position, target.transform.position) <= range;
+    protected bool Attacking => InRange && (target.transform.position- transform.position) == currentDirection;
 
     protected bool canAttack = true;
 
@@ -54,15 +55,15 @@ public class BaseEntity : MonoBehaviour
             return;
         }
 
-        this.FindTarget();
+        FindTarget();
 
         if (InRange) {
             if (!Attacking) {
-                this.GetInPosition();
+                GetInPosition();
             } 
         }else
         {   
-            this.GetInRange();
+            GetInRange();
         }
 
     }
@@ -75,18 +76,19 @@ public class BaseEntity : MonoBehaviour
             Debug.Log("spawnNode is null at Setup");
         }
         myTeam = team;
-        this.spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
-        this.startingPosition = spawnNode;
+        startingPosition = spawnNode;
         if (myTeam == Team.Team1)
         {
             currentDirection = Vector3.up;
-            this.transform.up = currentDirection;
+            transform.up = currentDirection;
         }
         else
         { 
             currentDirection = Vector3.up;
-            this.transform.up = currentDirection;
+            transform.up = currentDirection;
             SelfRotate(Vector3.down);
         }
 
@@ -94,20 +96,20 @@ public class BaseEntity : MonoBehaviour
         transform.position = currentNode.worldPosition;
         currentHealth = baseHealth;
         currentNode.SetOccupied(true);
-        //healthBar = Instantiate(healthBar, this.transform);
-        //healthBar.Setup(this.transform);
+        //healthBar = Instantiate(healthBar, transform);
+        //healthBar.Setup(transform);
     }
     protected virtual void GetInPosition()
     {
-        Vector3 directionToEnemy = (this.target.transform.position - this.transform.position);
+        Vector3 directionToEnemy = (target.transform.position - transform.position);
         SelfRotate(directionToEnemy);
-        if (!this.InPosition)
-        { Vector3 direction = (this.currentNode.worldPosition - this.transform.position);
-            this.transform.position += movementSpeed * Time.deltaTime * direction.normalized;
+        if (!InPosition)
+        { Vector3 direction = (currentNode.worldPosition - transform.position);
+            transform.position += movementSpeed * Time.deltaTime * direction.normalized;
         }
-        if (this.InPosition)
+        if (InPosition)
         {
-            this.transform.position = this.currentNode.worldPosition;
+            transform.position = currentNode.worldPosition;
         }
 
 
@@ -122,7 +124,7 @@ public class BaseEntity : MonoBehaviour
             ended = true;
             return;
         }
-        this.target = tempEnemy;
+        target = tempEnemy;
         
     }
 
@@ -139,18 +141,16 @@ public class BaseEntity : MonoBehaviour
 
     protected virtual bool MoveTowards(Node _destination)
     {
-        Vector3 direction = (_destination.worldPosition - this.transform.position);
+        Vector3 direction = (_destination.worldPosition - transform.position);
 
         if (direction.sqrMagnitude <= 0.005f)
         {
-            this.transform.position = _destination.worldPosition;
-            // animator.SetBool("walking", false);
+            transform.position = _destination.worldPosition;
             return true;
         }
         SelfRotate(direction);
         
-        this.transform.position += movementSpeed * Time.deltaTime * direction.normalized;
-        // animator.SetBool("walking", true);
+        transform.position += movementSpeed * Time.deltaTime * direction.normalized;
         return false;
     }
 
@@ -170,7 +170,7 @@ public class BaseEntity : MonoBehaviour
         {
             destination = null;
             List<Node> candidates = GridManager.Instance.GetNeighbors(target.currentNode);
-            candidates = candidates.OrderBy(x => Vector3.Distance(x.worldPosition, this.transform.position)).ToList();
+            candidates = candidates.OrderBy(x => Vector3.Distance(x.worldPosition, transform.position)).ToList();
             for (int i = 0; i < candidates.Count; i++)
             {
                 if (!candidates[i].IsOccupied)
@@ -202,8 +202,8 @@ public class BaseEntity : MonoBehaviour
     protected virtual void OnDeath()
     {
 
-        this.currentNode.SetOccupied(false);
-        this.currentNode = null;
+        currentNode.SetOccupied(false);
+        currentNode = null;
         spriteRenderer.enabled = false;
         Debug.Log("one unit down from" + myTeam);
         ended = true;
@@ -267,9 +267,9 @@ public class BaseEntity : MonoBehaviour
                 if (enemy.ended) continue;
                 Node enemyPosition = enemy.currentNode;
                 if (enemyPosition == null) continue;
-                if (Vector3.Distance(enemy.transform.position, this.transform.position) < minDistance)
+                if (Vector3.Distance(enemy.transform.position, transform.position) < minDistance)
                 {
-                    minDistance = Vector3.Distance(enemy.transform.position, this.transform.position);
+                    minDistance = Vector3.Distance(enemy.transform.position, transform.position);
                     tempEnemy = enemy;
                 }
             }
